@@ -10,7 +10,7 @@
 <body>
 
 <header class="jumbotron container pt-2">
-    <img src="../images/logo.jpg" alt="Logo FIW" style="width:53px; height=48px;">
+    <img src="../../Images/fiw_logo.jpg" alt="Logo FIW" style="width:53px; height=48px;">
     <h1>Teilnehmer_innen WebTech</h1>
 </header>
 
@@ -31,7 +31,6 @@
             </div>
         </div>
         <div class="col-12 col-lg-8">
-            <tbody id = "tbid">
             <table>
                 <thead>
                 <tr>
@@ -40,10 +39,10 @@
                     <th>E-Mail-Adresse</th>
                     <th>IP-Adresse</th>
                     <th></th>
-                    
+
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id = "tbody">
                 <tr id="A">
                     <td>Adam</td>
                     <td>Anderson</td>
@@ -412,108 +411,61 @@
 </main>
 <footer class="container pt-2"> Ana Skaro - Aufgabe 4</footer>
 <script>
-    function getPlace(nachname)
-    {
-        let test = "test";
-        let nachnamen = document.getElementsByTagName('tr');
-        for(let i=1; i<nachnamen.length; i++)
-        {
-            let c = "" + nachnamen[i].children[1].innerText;
-            if( nachname.toLowerCase() < c.toLowerCase())
-            {
-                return nachnamen[i];
+        function getPlace(nachname) {
+            let test = "test";
+            let nachnamen = document.getElementsByTagName('tr');
+            for (let i = 1; i < nachnamen.length; i++) {
+                let c = "" + nachnamen[i].children[1].innerText;
+                if (nachname.toLowerCase() < c.toLowerCase()) {
+                    return nachnamen[i];
+
+
+                    return "letzteStelle";
+                }
             }
         }
-        return "letzteStelle";
-    }
-function checkAndAdd()
-{
-    /* let sagt, wir definieren eine lokale! Variable und geben ihr einen Namen*/
-    let id1 = document.getElementById('id1');
-    let id1_value = id1.value;
+        function checkAndAdd() {
+            /* let sagt, wir definieren eine lokale! Variable und geben ihr einen Namen*/
+            let id1 = document.getElementById('id1');
+            let id1_value = id1.value;
 
-    let id2 = document.getElementById('id2');
-    let id2_value = id2.value;
+            let id2 = document.getElementById('id2');
+            let id2_value = id2.value;
 
-    let id3 = document.getElementById('id3');
-    let id3_value = id3.value;
+            let id3 = document.getElementById('id3');
+            let id3_value = id3.value;
 
-    let id4 = document.getElementById('id4');
-    let id4_value = id4.value;
+            let id4 = document.getElementById('id4');
+            let id4_value = id4.value;
 
-    if(id1_value !=="" && id2_value !=="" && id3_value !=="" && id4_value !=="" ){
+            if (id1_value !== "" && id2_value !== "" && id3_value !== "" && id4_value !== "") {
 
-    }
-    else{
-        id1.classList.remove('is_invalid');
-        id2.classList.remove('is_invalid');
-        id3.classList.remove('is_invalid');
-        id4.classList.remove('is_invalid');
+                id1.classList.remove('is_invalid');
+                id2.classList.remove('is_invalid');
+                id3.classList.remove('is_invalid');
+                id4.classList.remove('is_invalid');
+                /* tr = table row - einzelne Zeile // td = table d - einzelner Eintrag in Tabelle*/
+                let tr = document.createElement('tr');
+                let td1 = document.createElement('td');
+                td1.innerHTML = id1_value;
+                let td2 = document.createElement('td');
+                td2.innerHTML = id2_value;
+                let td3 = document.createElement('td');
+                td3.innerHTML = id3_value;
+                let td4 = document.createElement('td');
+                td4.innerHTML = id4_value;
+                let td5 = document.createElement('td');
 
-        let tr = document.createElement('tr');
-        let td1 = document.createElement('td');
-        td1.innerHTML = id1_value;
-        let td2 = document.createElement('td');
-        td2.innerHTML = id2_value;
-        let td3 = document.createElement('td');
-        td3.innerHTML = id3_value;
-        let td4 = document.createElement('td');
-        td4.innerHTML = id4_value;
-        let td5 = document.createElement('td');
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+                tr.appendChild(td5);
 
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-        tr.appendChild(td3);
-        tr.appendChild(td4);
-        tr.appendChild(td5);
-
-        let tr1 = document.getElementById('tr1');
-        let tbody = document.getElementById('tbody');
-        if(getPlace(tr.children[1].innerText) === "letzteStelle")
-        {
-            tbody.insertBefore(tr, tr1);
+                let tbody = document.getElementById("tbody");
+                tbody.insertBefore(tr, tbody.childNodes[tbody.childNodes.length-2]);
+            }
         }
-        else
-        {
-            tbody.insertBefore(tr, getPlace(tr.children[1].innerText));
-        }
-    }
-else
-    {
-        if(id1_value === "")
-        {
-            id1.classList.add('is_invalid');
-        }
-        else
-        {
-            id1.classList.remove('is_invalid');
-        }
-        if(id2_value === "")
-        {
-            id2.classList.add('is_invalid');
-        }
-        else
-        {
-            id2.classList.remove('is_invalid');
-        }
-        if(id3_value === "")
-        {
-            id3.classList.add('is_invalid');
-        }
-        else
-        {
-            id3.classList.remove('is_invalid');
-        }
-        if(id4_value === "")
-        {
-            id4.classList.add('is_invalid');
-        }
-        else
-        {
-            id4.classList.remove('is_invalid');
-        }
-    }
-}
 </script>
 </body>
 </html>
